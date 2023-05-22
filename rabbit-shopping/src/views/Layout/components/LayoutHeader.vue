@@ -1,5 +1,5 @@
 <script setup>
-// import LayoutHeaderUl from './LayoutHeaderUl.vue'
+import LayoutHeaderUl from './LayoutHeaderUl.vue'
 // import HeaderCart from './HeaderCart.vue'
 </script>
 
@@ -16,7 +16,7 @@
                 <input type="text" placeholder="搜一搜">
             </div>
             <!-- 头部购物车 -->
-            <HeaderCart />
+            <!-- <HeaderCart /> -->
         </div>
     </header>
 </template>
