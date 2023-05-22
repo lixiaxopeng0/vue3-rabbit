@@ -5,11 +5,9 @@ import { createPinia } from 'pinia';
 
 import App from './App.vue';
 import router from './router';
-import { getCotage } from '@/apis/testApi';
+// 引入初始化样式文件
+import '@/styles/common.scss';
 
-getCotage().then((data) => {
-  console.log(data);
-});
 const app = createApp(App);
 
 app.use(createPinia());
