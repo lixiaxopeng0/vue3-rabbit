@@ -8,10 +8,8 @@ import LayoutFixed from './components/LayoutFixed.vue';
 import { onMounted } from 'vue';
 import { useCategoryStore } from '@/stores/categoryStore';
 
-const category = useCategoryStore();
-onMounted(() => {
-    category.getCategory();
-});
+const categoryStore = useCategoryStore();
+onMounted(() => categoryStore.getCategory());
 </script>
 <template>
     <LayoutFixed />

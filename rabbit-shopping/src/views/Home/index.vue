@@ -9,7 +9,7 @@ import HomeProduct from './components/HomeProduct.vue';
 <template>
     <div class="container">
         <HomeCategory />
-        <HomeBanner />
+        <!-- <HomeBanner /> -->
     </div>
     <HomeNew />
     <HomeHot />
