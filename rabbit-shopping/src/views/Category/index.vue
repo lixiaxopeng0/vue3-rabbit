@@ -1,4 +1,5 @@
 <script setup>
+import GoodsItem from '../Home/components/GoodsItem.vue';
 import { getCategoryAPI } from '@/apis/category';
 import { getBannerAPI } from '@/apis/home';
 import { onMounted, ref } from 'vue';
@@ -20,7 +21,6 @@ const getBanner = async () => {
 };
 onMounted(() => getBanner());
 
-// import GoodsItem from '../Home/components/GoodsItem.vue';
 // import { useBanner } from './composables/useBanner';
 // import { useCategory } from './composables/useCategory';
 // const { bannerList } = useBanner()
@@ -31,11 +31,11 @@ onMounted(() => getBanner());
 
 <template>
     <div class="top-category">
-    <div class="container m-top-20">
-        <!-- 面包屑 -->
-        <div class="bread-container">
-            <el-breadcrumb separator=">">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <div class="container m-top-20">
+            <!-- 面包屑 -->
+            <div class="bread-container">
+                <el-breadcrumb separator=">">
+                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                     <el-breadcrumb-item>{{ categoryData.name }}</el-breadcrumb-item>
                 </el-breadcrumb>
             </div>
@@ -47,26 +47,25 @@ onMounted(() => getBanner());
                     </el-carousel-item>
                 </el-carousel>
             </div>
-            <!-- <div class="sub-list">
-                            <h3>全部分类</h3>
-                            <ul>
-                              <li v-for="i in categoryData.children" :key="i.id">
-                                <RouterLink :to="`/category/sub/${i.id}`">
-                                  <img :src="i.picture" />
-                                  <p>{{ i.name }}</p>
-                                </RouterLink>
-                              </li>
-                                </ul>
-                              </div> -->
-            <!-- <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
-                                <div class="head">
-                                  <h3>- {{ item.name }}-</h3>
-                                </div>
-                                <div class="body">
-                                  <GoodsItem v-for="good in item.goods" :goods="good" :key="good.id" />
-                                </div>
-                              </div>
-                               -->
+            <div class="sub-list">
+                <h3>全部分类</h3>
+                <ul>
+                    <li v-for="i in categoryData.children" :key="i.id">
+                        <RouterLink :to="`/category/sub/${i.id}`">
+                            <img :src="i.picture" />
+                            <p>{{ i.name }}</p>
+                        </RouterLink>
+                    </li>
+                </ul>
+            </div>
+            <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
+                <div class="head">
+                    <h3>- {{ item.name }}-</h3>
+                </div>
+                <div class="body">
+                    <GoodsItem v-for="good in item.goods" :goods="good" :key="good.id" />
+                </div>
+            </div>
         </div>
     </div>
 </template>
