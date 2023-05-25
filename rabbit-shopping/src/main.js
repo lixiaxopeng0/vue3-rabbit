@@ -9,11 +9,14 @@ import router from './router';
 import { lazyPlugin } from '@/directives';
 // 引入初始化样式文件
 import '@/styles/common.scss';
+// 引入全局组件插件
+import { componentPlugin } from '@/components';
 
 const app = createApp(App);
 const pinia = createPinia();
 // 注册持久化插件
 pinia.use(piniaPluginPersistedstate);
+app.use(componentPlugin);
 app.use(pinia);
 app.use(router);
 app.use(lazyPlugin);
