@@ -1,5 +1,5 @@
 <script setup lang="js">
-// import DetailHot from './components/DetailHot.vue'
+import DetailHot from './components/DetailHot.vue';
 import { getDetail } from '@/apis/detail';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
@@ -57,10 +57,10 @@ onMounted(() => getGoods());
                 <el-breadcrumb separator=">">
                     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                     <!-- 
-                        错误原因：goods一开始{}  {}.categories -> undefined  -> undefined[1]
-                        1. 可选链的语法?. 
-                        2. v-if手动控制渲染时机 保证只有数据存在才渲染
-                        -->
+                            错误原因：goods一开始{}  {}.categories -> undefined  -> undefined[1]
+                            1. 可选链的语法?. 
+                            2. v-if手动控制渲染时机 保证只有数据存在才渲染
+                            -->
                     <el-breadcrumb-item :to="{ path: `/category/${goods.categories[1].id}` }">{{ goods.categories[1].name }}
                     </el-breadcrumb-item>
                     <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{
@@ -163,9 +163,9 @@ onMounted(() => getGoods());
                         <!-- 24热榜+专题推荐 -->
                         <div class="goods-aside">
                             <!-- 24小时 -->
-                            <!-- <DetailHot :hot-type="1" /> -->
+                            <DetailHot :hot-type="1" />
                             <!-- 周 -->
-                            <!-- <DetailHot :hot-type="2" /> -->
+                            <DetailHot :hot-type="2" />
                         </div>
                     </div>
                 </div>
