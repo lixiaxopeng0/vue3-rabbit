@@ -1,3 +1,4 @@
+// 切换和load加载
 import { getSubCategoryAPI } from '@/apis/category';
 import { ref } from 'vue';
 
