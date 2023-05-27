@@ -21,10 +21,10 @@ const confirm = () => { };
                 <!-- 多模版渲染 区分登录状态和非登录状态 -->
 
                 <!-- 适配思路: 登录时显示第一块 非登录时显示第二块  是否有token userStore.userInfo.token-->
-                <template v-if="!!userStore.userInfo.token">
+                <template v-if="userStore.userInfo.token">
                     <li>
                         <a href="javascript:;"><i class=" iconfont icon-user"></i>
-                            <!-- {{ userStore.userInfo.account }} -->
+                            {{ userStore.userInfo.account }}
                         </a>
                     </li>
                     <li>
