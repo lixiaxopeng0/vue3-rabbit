@@ -44,24 +44,25 @@ const rules = {
 
 // // 3. 获取form实例做统一校验
 const formRef = ref(null);
+console.log(form.value);
 // const router = useRouter()
-// const doLogin = () => {
-//   const { account, password } = form.value
-//   // 调用实例方法
-//   formRef.value.validate(async (valid) => {
-//     // valid: 所有表单都通过校验  才为true
-//     console.log(valid)
-//     // 以valid做为判断条件 如果通过校验才执行登录逻辑
-//     if (valid) {
-//       // TODO LOGIN
-//       await userStore.getUserInfo({ account, password })
-//       // 1. 提示用户
-//       ElMessage({ type: 'success', message: '登录成功' })
-//       // 2. 跳转首页
-//       router.replace({ path: '/' })
-//     }
-//   })
-// }
+const doLogin = () => {
+    const { account, password } = form.value;
+    // 调用实例方法
+    formRef.value.validate(async (valid) => {
+        // valid: 所有表单都通过校验  才为true
+        console.log(valid);
+        // 以valid做为判断条件 如果通过校验才执行登录逻辑
+        if (valid) {
+            // TODO LOGIN
+            //   await userStore.getUserInfo({ account, password })
+            // 1. 提示用户
+            ElMessage({ type: 'success', message: '登录成功' });
+            // 2. 跳转首页
+            //   router.replace({ path: '/' })
+        }
+    });
+};
 
 // 1. 用户名和密码 只需要通过简单的配置（看文档的方式 - 复杂功能通过多个不同组件拆解）
 // 2. 同意协议  自定义规则  validator:(rule,value,callback)=>{}
@@ -103,8 +104,7 @@ const formRef = ref(null);
                                     我已同意隐私条款和服务条款
                                 </el-checkbox>
                             </el-form-item>
-                            <!-- @click="doLogin" -->
-                            <el-button size="large" class="subBtn">点击登录</el-button>
+                            <el-button size="large" class="subBtn" @click="doLogin">点击登录</el-button>
                         </el-form>
                     </div>
                 </div>
