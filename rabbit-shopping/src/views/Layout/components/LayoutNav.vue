@@ -21,7 +21,7 @@ const confirm = () => { };
                 <!-- 多模版渲染 区分登录状态和非登录状态 -->
 
                 <!-- 适配思路: 登录时显示第一块 非登录时显示第二块  是否有token userStore.userInfo.token-->
-                <template v-if="true">
+                <template v-if="false">
                     <li>
                         <a href="javascript:;"><i class=" iconfont icon-user"></i>
                             <!-- {{ userStore.userInfo.account }} -->
@@ -38,8 +38,7 @@ const confirm = () => { };
                     <li><a href="javascript:;">会员中心</a></li>
                 </template>
                 <template v-else>
-                    <!-- @click="$router.push('/login')" -->
-                    <li><a href="javascript:;">请先登录</a></li>
+                    <li><a href="javascript:;" @click="$router.push('/login')">请先登录</a></li>
                     <li><a href="javascript:;">帮助中心</a></li>
                     <li><a href="javascript:;">关于我们</a></li>
                 </template>
