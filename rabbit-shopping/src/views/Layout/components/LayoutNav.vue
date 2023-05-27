@@ -1,7 +1,7 @@
 <script setup>
-// import { useUserStore } from '@/stores/userStore';
+import { useUserStore } from '@/stores/userStore';
 // import { useRouter } from 'vue-router';
-// const userStore = useUserStore();
+const userStore = useUserStore();
 // const router = useRouter();
 // const confirm = () => {
 //     console.log('用户要退出登录了');
@@ -21,7 +21,7 @@ const confirm = () => { };
                 <!-- 多模版渲染 区分登录状态和非登录状态 -->
 
                 <!-- 适配思路: 登录时显示第一块 非登录时显示第二块  是否有token userStore.userInfo.token-->
-                <template v-if="false">
+                <template v-if="!!userStore.userInfo.token">
                     <li>
                         <a href="javascript:;"><i class=" iconfont icon-user"></i>
                             <!-- {{ userStore.userInfo.account }} -->

@@ -5,15 +5,14 @@ import { ref } from 'vue';
 import { ElMessage } from 'element-plus';
 import 'element-plus/theme-chalk/el-message.css';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/userStore';
 
-// import { useUserStore } from '@/stores/userStore'
-
-// const userStore = useUserStore()
+const userStore = useUserStore();
 
 // 1. 准备表单对象
 const form = ref({
-    account: '18610848230',
-    password: '123456',
+    account: 'heima282',
+    password: 'hm#qd@23!',
     agree: true
 });
 
@@ -51,11 +50,11 @@ const doLogin = () => {
     // 调用实例方法
     formRef.value.validate(async (valid) => {
         // valid: 所有表单都通过校验  才为true
-        console.log(valid);
+        // console.log(valid);
         // 以valid做为判断条件 如果通过校验才执行登录逻辑
         if (valid) {
             // TODO LOGIN
-            //   await userStore.getUserInfo({ account, password })
+            await userStore.getUserInfo({ account, password });
             // 1. 提示用户
             ElMessage({ type: 'success', message: '登录成功' });
             // 2. 跳转首页

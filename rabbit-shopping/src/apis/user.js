@@ -2,6 +2,7 @@
 import httpInstance from '@/utils/https';
 
 export const loginAPI = ({ account, password }) => {
+  console.log(111);
   return httpInstance({
     url: '/login',
     method: 'POST',
