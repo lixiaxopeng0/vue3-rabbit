@@ -3,8 +3,8 @@
 
 import { ref } from 'vue';
 import { ElMessage } from 'element-plus';
-// import 'element-plus/theme-chalk/el-message.css'
-// import { useRouter } from 'vue-router'
+import 'element-plus/theme-chalk/el-message.css';
+import { useRouter } from 'vue-router';
 
 // import { useUserStore } from '@/stores/userStore'
 
@@ -45,7 +45,7 @@ const rules = {
 // // 3. 获取form实例做统一校验
 const formRef = ref(null);
 console.log(form.value);
-// const router = useRouter()
+const router = useRouter();
 const doLogin = () => {
     const { account, password } = form.value;
     // 调用实例方法
@@ -59,7 +59,7 @@ const doLogin = () => {
             // 1. 提示用户
             ElMessage({ type: 'success', message: '登录成功' });
             // 2. 跳转首页
-            //   router.replace({ path: '/' })
+            router.replace({ path: '/' });
         }
     });
 };
