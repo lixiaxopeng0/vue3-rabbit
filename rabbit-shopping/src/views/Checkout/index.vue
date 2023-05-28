@@ -23,13 +23,18 @@ onMounted(() => getCheckInfo());
 // // 控制弹框打开
 const showDialog = ref(false);
 
-
 // // 切换地址
 const activeAddress = ref({});
+
+const showDialogModal = () => {
+  showDialog.value = true;
+  activeAddress.value = curAddress.value;
+};
 const switchAddress = (item) => {
   activeAddress.value = item;
 };
 
+// 取消
 const cnacel = () => {
   showDialog.value = false;
   activeAddress.value = {};
@@ -87,7 +92,7 @@ const confirm = () => {
               </ul>
             </div>
             <div class="action">
-              <el-button size="large" @click="showDialog = true">切换地址</el-button>
+              <el-button size="large" @click="showDialogModal">切换地址</el-button>
               <el-button size="large">添加地址</el-button>
             </div>
           </div>
