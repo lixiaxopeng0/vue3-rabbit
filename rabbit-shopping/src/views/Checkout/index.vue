@@ -1,11 +1,11 @@
 <script setup>
 import { getCheckInfoAPI, createOrderAPI } from '@/apis/checkout';
-// import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { onMounted, ref } from 'vue';
-// import { useCartStore } from '@/stores/cartStore';
+import { useCartStore } from '@/stores/cartStore';
 
-// const cartStore = useCartStore();
-// const router = useRouter();
+const cartStore = useCartStore();
+const router = useRouter();
 // // 获取结算信息
 const checkInfo = ref({}); // 订单对象
 const curAddress = ref({}); // 默认地址
@@ -47,31 +47,31 @@ const confirm = () => {
 
 
 
-// // 创建订单
-// const createOrder = async () => {
-//   const res = await createOrderAPI({
-//     deliveryTimeType: 1,
-//     payType: 1,
-//     payChannel: 1,
-//     buyerMessage: '',
-//     goods: checkInfo.value.goods.map(item => {
-//       return {
-//         skuId: item.skuId,
-//         count: item.count
-//       };
-//     }),
-//     addressId: curAddress.value.id
-//   });
-//   const orderId = res.result.id;
-//   router.push({
-//     path: '/pay',
-//     query: {
-//       id: orderId
-//     }
-//   });
-//   // 更新购物车
-//   cartStore.updateNewList();
-// }
+// 创建订单
+const createOrder = async () => {
+  const res = await createOrderAPI({
+    deliveryTimeType: 1,
+    payType: 1,
+    payChannel: 1,
+    buyerMessage: '',
+    goods: checkInfo.value.goods.map(item => {
+      return {
+        skuId: item.skuId,
+        count: item.count
+      };
+    }),
+    addressId: curAddress.value.id
+  });
+  const orderId = res.result.id;
+  router.push({
+    path: '/pay',
+    query: {
+      id: orderId
+    }
+  });
+  // 更新购物车
+  cartStore.updateNewList();
+}
 
 </script>
 
@@ -111,7 +111,6 @@ const confirm = () => {
               </tr>
             </thead>
             <tbody>
-              <!--  -->
               <tr v-for="i in checkInfo.goods" :key="i.id">
                 <td>
                   <a href="javascript:;" class="info">
@@ -150,26 +149,25 @@ const confirm = () => {
           <div class="total">
             <dl>
               <dt>商品件数：</dt>
-              <dd>{{ 'checkInfo.summary?.goodsCount' }}件</dd>
+              <dd>{{ checkInfo.summary?.goodsCount }}件</dd>
             </dl>
             <dl>
               <dt>商品总价：</dt>
-              <dd>¥{{ 'checkInfo.summary?.totalPrice.toFixed(2)' }}</dd>
+              <dd>¥{{ checkInfo.summary?.totalPrice.toFixed(2) }}</dd>
             </dl>
             <dl>
               <dt>运<i></i>费：</dt>
-              <dd>¥{{ 'checkInfo.summary?.postFee.toFixed(2)' }}</dd>
+              <dd>¥{{ checkInfo.summary?.postFee.toFixed(2) }}</dd>
             </dl>
             <dl>
               <dt>应付总额：</dt>
-              <dd class="price">{{ 'checkInfo.summary?.totalPayPrice.toFixed(2)' }}</dd>
+              <dd class="price">{{ checkInfo.summary?.totalPayPrice.toFixed(2) }}</dd>
             </dl>
           </div>
         </div>
         <!-- 提交订单 -->
         <div class="submit">
-          <!--  @click="createOrder"  -->
-          <el-button type="primary" size="large">提交订单</el-button>
+          <el-button @click="createOrder" type="primary" size="large">提交订单</el-button>
         </div>
       </div>
     </div>
