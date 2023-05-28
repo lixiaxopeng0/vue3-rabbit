@@ -12,7 +12,7 @@ const singleCheck = (i, selected) => {
 
 
 const allCheck = (selected) => {
-  // cartStore.allCheck(selected)
+  cartStore.allCheck(selected);
 };
 </script>
 
